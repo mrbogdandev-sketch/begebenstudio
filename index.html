@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>BDM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+@font-face {
+    font-family: "TextFont";
+    src: url("text.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"TextFont", sans-serif;
+    background:#fff;
+    color:#000;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:32px 20px;
+}
+
+/* LOGO */
+.logo img{
+    height:48px;
+}
+
+/* TITLES */
+.section-title{
+    font-size:42px;
+    letter-spacing:6px;
+    margin:70px 0 30px;
+}
+
+/* PROJECTS */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:32px;
+}
+
+.card img{
+    width:100%;
+    border-radius:18px;
+    display:block;
+}
+
+.card p{
+    margin-top:12px;
+    font-size:18px;
+}
+
+/* NEWS */
+.news{
+    max-width:420px;
+}
+
+.news img{
+    width:100%;
+    border-radius:18px;
+}
+
+/* PRODUCT */
+.product{
+    text-align:center;
+    margin-top:120px;
+}
+
+.product h1{
+    font-size:48px;
+    letter-spacing:8px;
+}
+
+.product h2{
+    font-size:120px;
+    letter-spacing:6px;
+}
+
+/* NFT SINGLE IMAGE */
+.nft-banner{
+    margin:50px auto 0;
+    max-width:900px;
+}
+
+.nft-banner img{
+    width:100%;
+    height:auto;
+    display:block;
+    border-radius:16px;
+}
+
+/* EARN */
+.earn{
+    margin-top:80px;
+    text-align:center;
+}
+
+.earn h2{
+    font-size:34px;
+    letter-spacing:6px;
+}
+
+.note{
+    font-size:12px;
+    margin-top:10px;
+    opacity:0.7;
+}
+
+/* SOCIAL */
+.social{
+    text-align:center;
+    margin-top:100px;
+}
+
+.social h3{
+    letter-spacing:5px;
+    font-size:28px;
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:14px;
+    padding:14px 32px;
+    border-radius:12px;
+    border:1px solid #000;
+    text-decoration:none;
+    color:#000;
+    transition:0.2s;
+}
+
+.btn:hover{
+    background:#000;
+    color:#fff;
+}
+
+/* QUESTIONS */
+.questions{
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:40px;
+    margin-top:120px;
+}
+
+.questions-text{
+    font-size:56px;
+    letter-spacing:6px;
+}
+
+.questions small{
+    font-size:20px;
+}
+
+.questions img{
+    width:220px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    .section-title{
+        font-size:28px;
+        letter-spacing:4px;
+    }
+
+    .product h1{
+        font-size:32px;
+    }
+
+    .product h2{
+        font-size:72px;
+    }
+
+    .earn h2{
+        font-size:24px;
+    }
+
+    .questions{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .questions-text{
+        font-size:36px;
+    }
+
+    .questions img{
+        margin:auto;
+    }
+
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="logo">
+    <img src="logo.svg">
+</div>
+
+<div class="section-title">НАШИ ПРОЕКТЫ</div>
+
+<div class="projects">
+    <div class="card">
+        <img src="project1.jpg">
+        <p>BDM</p>
+    </div>
+    <div class="card">
+        <img src="project2.jpg">
+        <p>BDM</p>
+    </div>
+</div>
+
+<div class="section-title">ПОСЛЕДНИЕ НОВОСТИ</div>
+
+<div class="news">
+    <img src="news.jpg">
+    <p>ТЕКСТ</p>
+</div>
+
+<div class="product">
+    <h1>ОЖИДАЕМЫЙ ПРОДУКТ</h1>
+    <h2>BDM</h2>
+</div>
+
+<div class="nft-banner">
+    <img src="nfts.jpg" alt="NFT banner">
+</div>
+
+<div class="earn">
+    <h2>ЗАРАБОТАЙ B-КОИНЫ<br>НА СВОИХ B-NFT!</h2>
+    <div class="note">
+        * B-коины — виртуальная валюта, за которую можно совершать покупки только в боте
+    </div>
+</div>
+
+<div class="social">
+    <h3>НАШИ СОЦСЕТИ</h3>
+
+    <h3>TELEGRAM</h3>
+    <a class="btn" href="https://t.me/begebenstudio" target="_blank">НАЖМИ ЧТО БЫ ПЕРЕЙТИ</a>
+
+    <h3>TELEGRAM СОЗДАТЕЛЯ</h3>
+    <a class="btn" href="#">НАЖМИ ЧТО БЫ ПЕРЕЙТИ</a>
+</div>
+
+<div class="questions">
+    <div>
+        <div class="questions-text">ОСТАЛИСЬ ВОПРОСЫ?</div>
+        <small>Напиши мне!</small>
+    </div>
+    <img src="graz.jpg">
+</div>
+
+</div>
+
+</body>
+</html>

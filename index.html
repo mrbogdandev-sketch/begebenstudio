@@ -1,271 +1,433 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>BDM</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>БЭГЭБЭН СТУДИЯ</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
 
-<style>
-@font-face {
-    font-family: "TextFont";
-    src: url("text.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
-}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:"TextFont", sans-serif;
-    background:#fff;
-    color:#000;
-}
-
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:32px 20px;
-}
-
-/* LOGO */
-.logo img{
-    height:48px;
-}
-
-/* TITLES */
-.section-title{
-    font-size:42px;
-    letter-spacing:6px;
-    margin:70px 0 30px;
-}
-
-/* PROJECTS */
-.projects{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:32px;
-}
-
-.card img{
-    width:100%;
-    border-radius:18px;
-    display:block;
-}
-
-.card p{
-    margin-top:12px;
-    font-size:18px;
-}
-
-/* NEWS */
-.news{
-    max-width:420px;
-}
-
-.news img{
-    width:100%;
-    border-radius:18px;
-}
-
-/* PRODUCT */
-.product{
-    text-align:center;
-    margin-top:120px;
-}
-
-.product h1{
-    font-size:48px;
-    letter-spacing:8px;
-}
-
-.product h2{
-    font-size:120px;
-    letter-spacing:6px;
-}
-
-/* NFT SINGLE IMAGE */
-.nft-banner{
-    margin:50px auto 0;
-    max-width:900px;
-}
-
-.nft-banner img{
-    width:100%;
-    height:auto;
-    display:block;
-    border-radius:16px;
-}
-
-/* EARN */
-.earn{
-    margin-top:80px;
-    text-align:center;
-}
-
-.earn h2{
-    font-size:34px;
-    letter-spacing:6px;
-}
-
-.note{
-    font-size:12px;
-    margin-top:10px;
-    opacity:0.7;
-}
-
-/* SOCIAL */
-.social{
-    text-align:center;
-    margin-top:100px;
-}
-
-.social h3{
-    letter-spacing:5px;
-    font-size:28px;
-    margin-top:30px;
-}
-
-.btn{
-    display:inline-block;
-    margin-top:14px;
-    padding:14px 32px;
-    border-radius:12px;
-    border:1px solid #000;
-    text-decoration:none;
-    color:#000;
-    transition:0.2s;
-}
-
-.btn:hover{
-    background:#000;
-    color:#fff;
-}
-
-/* QUESTIONS */
-.questions{
-    display:grid;
-    grid-template-columns:1fr auto;
-    align-items:center;
-    gap:40px;
-    margin-top:120px;
-}
-
-.questions-text{
-    font-size:56px;
-    letter-spacing:6px;
-}
-
-.questions small{
-    font-size:20px;
-}
-
-.questions img{
-    width:220px;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-    .section-title{
-        font-size:28px;
-        letter-spacing:4px;
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'VT323', 'Courier New', monospace;
+      font-size: 18px;
+      cursor: crosshair;
+      overflow-x: hidden;
     }
 
-    .product h1{
-        font-size:32px;
+    /* ===== ШАПКА ===== */
+    header {
+      text-align: center;
+      padding: 20px 0 10px;
+      border-bottom: 3px double #fff;
     }
 
-    .product h2{
-        font-size:72px;
+    header img.logo {
+      width: 110px;
+      height: auto;
+      filter: invert(1);
+      display: block;
+      margin: 0 auto 10px;
     }
 
-    .earn h2{
-        font-size:24px;
+    .site-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 26px;
+      color: #fff;
+      letter-spacing: 4px;
+      text-shadow: 3px 3px 0px #333;
+      animation: flicker 5s infinite;
     }
 
-    .questions{
-        grid-template-columns:1fr;
-        text-align:center;
+    @keyframes flicker {
+      0%, 93%, 100% { opacity: 1; }
+      94%  { opacity: 0.3; }
+      95%  { opacity: 1; }
+      97%  { opacity: 0.15; }
+      98%  { opacity: 1; }
     }
 
-    .questions-text{
-        font-size:36px;
+    .subtitle {
+      font-size: 13px;
+      color: #555;
+      margin-top: 6px;
+      letter-spacing: 3px;
+      font-family: 'Courier New', monospace;
     }
 
-    .questions img{
-        margin:auto;
+    /* ===== MARQUEE ===== */
+    .marquee-bar {
+      border-top: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      padding: 5px 0;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
-}
-</style>
+    .marquee-bar span {
+      display: inline-block;
+      animation: marquee 22s linear infinite;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+    }
+
+    @keyframes marquee {
+      0%   { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* ===== НАВ ===== */
+    nav {
+      text-align: center;
+      padding: 12px;
+      border-bottom: 1px solid #333;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      padding: 6px 12px;
+      border: 2px solid #fff;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* ===== КОНТЕНТ ===== */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 15px;
+    }
+
+    section {
+      margin-bottom: 50px;
+      border: 2px solid #fff;
+      padding: 20px;
+    }
+
+    .section-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 14px;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px dashed #fff;
+      letter-spacing: 3px;
+    }
+
+    .section-title::before { content: ">>> "; }
+    .section-title::after  { content: " <<<"; }
+
+    /* ===== НОВОСТИ ===== */
+    .news-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .news-card {
+      border: 2px solid #fff;
+      width: 370px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .news-card:hover { box-shadow: 0 0 12px #ffffff22; }
+
+    .news-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 2px solid #fff;
+      filter: grayscale(20%);
+    }
+
+    .img-placeholder {
+      width: 100%;
+      height: 200px;
+      background: #0a0a0a;
+      border-bottom: 2px solid #fff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #333;
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    .news-card-body { padding: 14px; }
+
+    .news-card-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+
+    .news-card-text {
+      font-size: 17px;
+      color: #bbb;
+      line-height: 1.5;
+    }
+
+    .news-date {
+      font-size: 12px;
+      color: #444;
+      margin-top: 10px;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ===== ПРОЕКТЫ ===== */
+    .no-projects {
+      text-align: center;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 12px;
+      color: #444;
+      padding: 40px 20px;
+      border: 2px dashed #222;
+    }
+
+    .under-construction {
+      text-align: center;
+      border: 2px dashed #2a2a2a;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: #333;
+      letter-spacing: 2px;
+    }
+
+    .uc-text { animation: blink-anim 1.2s step-end infinite; }
+
+    @keyframes blink-anim {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* ===== СВЯЗЬ ===== */
+    .contact-wrapper {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .creator-block { text-align: center; flex-shrink: 0; }
+
+    .creator-block img {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      display: block;
+      border: 2px solid #fff;
+      filter: grayscale(100%);
+      margin-bottom: 8px;
+    }
+
+    .creator-label {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: #555;
+      letter-spacing: 2px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: center;
+      padding-top: 10px;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #000;
+      background: #fff;
+      padding: 10px 18px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      border: 2px solid #fff;
+      letter-spacing: 1px;
+      line-height: 1.8;
+    }
+
+    .contact-btn:hover { background: #000; color: #fff; }
+    .contact-btn .btn-sub { font-size: 8px; color: #888; display: block; }
+    .contact-btn:hover .btn-sub { color: #888; }
+
+    .guestbook-bar {
+      text-align: center;
+      padding: 8px;
+      border: 1px solid #1a1a1a;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: #333;
+      margin-top: 15px;
+      letter-spacing: 2px;
+    }
+
+    /* ===== РАЗДЕЛИТЕЛЬ ===== */
+    .retro-hr {
+      border: none;
+      height: 4px;
+      background: repeating-linear-gradient(
+        to right,
+        #fff 0px, #fff 6px,
+        #000 6px, #000 12px
+      );
+      margin: 30px 0;
+    }
+
+    /* ===== ФУТЕР ===== */
+    footer {
+      border-top: 3px double #fff;
+      text-align: center;
+      padding: 14px;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: #222;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 600px) {
+      .site-title { font-size: 16px; }
+      .news-card  { width: 100%; }
+      nav a       { font-size: 8px; margin: 3px 4px; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
-
-<div class="logo">
-    <img src="logo.svg">
-</div>
-
-<div class="section-title">НАШИ ПРОЕКТЫ</div>
-
-<div class="projects">
-    <div class="card">
-        <img src="project1.jpg">
-        <p>BDM</p>
+  <!-- ШАПКА -->
+  <header>
+    <img class="logo" src="logo.svg" alt="BEGEBЕН">
+    <div class="site-title">БЭГЭБЭН</div>
+    <div class="subtitle">STUDIO // OFFICIAL SITE // EST. 2024</div>
+    <br>
+    <div style="font-family:'Courier New',monospace;font-size:11px;color:#2a2a2a;letter-spacing:2px;">
+      -= СТУДИЯ РАЗРАБОТКИ =-
     </div>
-    <div class="card">
-        <img src="project2.jpg">
-        <p>BDM</p>
-    </div>
-</div>
+  </header>
 
-<div class="section-title">ПОСЛЕДНИЕ НОВОСТИ</div>
+  <!-- БЕГУЩАЯ СТРОКА -->
+  <div class="marquee-bar">
+    <span>
+      *** БЭГЭБЭН СТУДИЯ *** РАЗРАБОТКА *** МЫ ЕЩЁ ЖИВЫ *** ПИШИТЕ В ТЕЛЕГРАМ *** БЭГЭБЭН СТУДИЯ *** РАЗРАБОТКА *** МЫ ЕЩЁ ЖИВЫ *** ПИШИТЕ В ТЕЛЕГРАМ *** БЭГЭБЭН СТУДИЯ *** РАЗРАБОТКА ***
+    </span>
+  </div>
 
-<div class="news">
-    <img src="news.jpg">
-    <p>ТЕКСТ</p>
-</div>
+  <!-- НАВИГАЦИЯ -->
+  <nav>
+    <a href="#news">[ НОВОСТИ ]</a>
+    <a href="#projects">[ ПРОЕКТЫ ]</a>
+    <a href="#contact">[ СВЯЗЬ ]</a>
+  </nav>
 
-<div class="product">
-    <h1>ОЖИДАЕМЫЙ ПРОДУКТ</h1>
-    <h2>BDM</h2>
-</div>
+  <!-- КОНТЕНТ -->
+  <div class="container">
 
-<div class="nft-banner">
-    <img src="nfts.jpg" alt="NFT banner">
-</div>
+    <!-- НОВОСТИ -->
+    <section id="news">
+      <h2 class="section-title">НОВОСТИ</h2>
+      <div class="news-grid">
 
-<div class="earn">
-    <h2>ЗАРАБОТАЙ B-КОИНЫ<br>НА СВОИХ B-NFT!</h2>
-    <div class="note">
-        * B-коины — виртуальная валюта, за которую можно совершать покупки только в боте
-    </div>
-</div>
+        <div class="news-card">
+          <img src="news1.png" alt="NEWS1"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="img-placeholder">[ NO IMAGE ]</div>
+          <div class="news-card-body">
+            <div class="news-card-title">!! СТУДИЯ ОБАНКРОТИЛАСЬ! !!</div>
+            <div class="news-card-text">
+              Студия бэгэбэн обанкротилась. Глава заявил:<br><br>
+              <em style="color:#777;">"С С Сссссссссссс"</em><br><br>
+              Ему аплодировали стоя.
+            </div>
+            <div class="news-date">// СРОЧНО //</div>
+          </div>
+        </div>
 
-<div class="social">
-    <h3>НАШИ СОЦСЕТИ</h3>
+        <div class="news-card">
+          <img src="news2.png" alt="NEWS2"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="img-placeholder">[ NO IMAGE ]</div>
+          <div class="news-card-body">
+            <div class="news-card-title">МЫ РАБОТАЕМ НАД ПРОЕКТОМ..</div>
+            <div class="news-card-text">
+              Мы работаем над крутым проектом что бы заработать и купить поесть.
+            </div>
+            <div class="news-date"> В РАБОТЕ </div>
+          </div>
+        </div>
 
-    <h3>TELEGRAM</h3>
-    <a class="btn" href="https://t.me/begebenstudio" target="_blank">НАЖМИ ЧТО БЫ ПЕРЕЙТИ</a>
+      </div>
+    </section>
 
-    <h3>TELEGRAM СОЗДАТЕЛЯ</h3>
-    <a class="btn" href="#">НАЖМИ ЧТО БЫ ПЕРЕЙТИ</a>
-</div>
+    <div class="retro-hr"></div>
 
-<div class="questions">
-    <div>
-        <div class="questions-text">ОСТАЛИСЬ ВОПРОСЫ?</div>
-        <small>Напиши мне!</small>
-    </div>
-    <img src="graz.jpg">
-</div>
+    <!-- ПРОЕКТЫ -->
+    <section id="projects">
+      <h2 class="section-title">ПРОЕКТЫ</h2>
+      <div class="under-construction">
+        <span class="uc-text">!!! РАЗДЕЛ В РАЗРАБОТКЕ !!!</span>
+      </div>
+      <div class="no-projects">ПОКА НИ ОДНОГО ПРОЕКТА</div>
+    </section>
 
-</div>
+    <div class="retro-hr"></div>
+
+    <!-- СВЯЗЬ -->
+    <section id="contact">
+      <h2 class="section-title">СВЯЗЬ</h2>
+      <div class="contact-wrapper">
+
+        <div class="creator-block">
+          <img src="sss.png" alt="CREATOR"
+            onerror="this.style.background='#111';">
+          <div class="creator-label">// СОЗДАТЕЛЬ //</div>
+        </div>
+
+        <div class="contact-links">
+          <a class="contact-btn" href="https://t.me/thebogdand" target="_blank" rel="noopener">
+            ТЕЛЕГРАМ
+            <span class="btn-sub">@thebogdand</span>
+          </a>
+          <a class="contact-btn" href="https://t.me/begebenstudio" target="_blank" rel="noopener">
+            КАНАЛ СТУДИИ
+            <span class="btn-sub">@begebenstudio</span>
+          </a>
+        </div>
+
+      </div>
+      <div class="guestbook-bar">
+        ТАМ МЫ ПОСТИМ ВАЖНУЮ ИНФОРМАЦИЮ
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ФУТЕР -->
+  <footer>
+    &lt;!-- (C) БЭГЭБЭН СТУДИЯ 2026 --&gt;
+  </footer>
 
 </body>
 </html>

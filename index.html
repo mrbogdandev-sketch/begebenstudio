@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>БЭГЭБЭН СТУДИЯ</title>
+  <title>бэгэбэн</title>
+  <link rel="icon" href="fav.ico" type="image/x-icon">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
 
@@ -18,44 +19,71 @@
       overflow-x: hidden;
     }
 
+    /* ===== SCROLL АНИМАЦИИ ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
     /* ===== ШАПКА ===== */
     header {
       text-align: center;
-      padding: 20px 0 10px;
+      padding: 30px 0 20px;
       border-bottom: 3px double #fff;
     }
 
     header img.logo {
-      width: 110px;
+      width: 220px;
       height: auto;
-      filter: invert(1);
       display: block;
-      margin: 0 auto 10px;
+      margin: 0 auto 14px;
+      transition: transform 0.3s ease;
     }
 
-    .site-title {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 26px;
-      color: #fff;
-      letter-spacing: 4px;
-      text-shadow: 3px 3px 0px #333;
-      animation: flicker 5s infinite;
-    }
-
-    @keyframes flicker {
-      0%, 93%, 100% { opacity: 1; }
-      94%  { opacity: 0.3; }
-      95%  { opacity: 1; }
-      97%  { opacity: 0.15; }
-      98%  { opacity: 1; }
+    header img.logo:hover {
+      transform: scale(1.04);
     }
 
     .subtitle {
       font-size: 13px;
-      color: #555;
+      color: #888;
       margin-top: 6px;
       letter-spacing: 3px;
       font-family: 'Courier New', monospace;
+    }
+
+    .header-label {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: #555;
+      letter-spacing: 2px;
+      margin-top: 6px;
     }
 
     /* ===== MARQUEE ===== */
@@ -97,6 +125,7 @@
       padding: 6px 12px;
       border: 2px solid #fff;
       display: inline-block;
+      transition: background 0.15s, color 0.15s;
     }
 
     nav a:hover {
@@ -144,9 +173,13 @@
       width: 370px;
       overflow: hidden;
       flex-shrink: 0;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
-    .news-card:hover { box-shadow: 0 0 12px #ffffff22; }
+    .news-card:hover {
+      box-shadow: 0 0 20px #ffffff18;
+      transform: translateY(-3px);
+    }
 
     .news-card img {
       width: 100%;
@@ -166,7 +199,7 @@
       align-items: center;
       justify-content: center;
       font-size: 11px;
-      color: #333;
+      color: #444;
       font-family: 'Press Start 2P', monospace;
     }
 
@@ -182,15 +215,84 @@
 
     .news-card-text {
       font-size: 17px;
-      color: #bbb;
-      line-height: 1.5;
+      color: #d0d0d0;
+      line-height: 1.6;
     }
 
     .news-date {
       font-size: 12px;
-      color: #444;
+      color: #888;
       margin-top: 10px;
       font-family: 'Courier New', monospace;
+      letter-spacing: 2px;
+    }
+
+    /* ===== РЕТРО ПЛЕЕР ===== */
+    .retro-player {
+      border: 2px solid #fff;
+      background: #0a0a0a;
+      padding: 14px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .play-btn {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      background: #fff;
+      color: #000;
+      border: 2px solid #fff;
+      padding: 8px 12px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .play-btn:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    .player-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .player-title {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: #888;
+      letter-spacing: 2px;
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    .player-progress-wrap {
+      width: 100%;
+      height: 8px;
+      background: #222;
+      border: 1px solid #555;
+      cursor: pointer;
+      margin-bottom: 6px;
+    }
+
+    .player-progress-bar {
+      height: 100%;
+      background: #fff;
+      width: 0%;
+      transition: width 0.3s linear;
+      pointer-events: none;
+    }
+
+    .player-time {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: #666;
+      letter-spacing: 1px;
     }
 
     /* ===== ПРОЕКТЫ ===== */
@@ -198,19 +300,19 @@
       text-align: center;
       font-family: 'Press Start 2P', monospace;
       font-size: 12px;
-      color: #444;
+      color: #888;
       padding: 40px 20px;
-      border: 2px dashed #222;
+      border: 2px dashed #333;
     }
 
     .under-construction {
       text-align: center;
-      border: 2px dashed #2a2a2a;
+      border: 2px dashed #333;
       padding: 10px;
       margin-bottom: 15px;
       font-family: 'Courier New', monospace;
       font-size: 12px;
-      color: #333;
+      color: #777;
       letter-spacing: 2px;
     }
 
@@ -240,12 +342,15 @@
       border: 2px solid #fff;
       filter: grayscale(100%);
       margin-bottom: 8px;
+      transition: filter 0.4s ease;
     }
+
+    .creator-block img:hover { filter: grayscale(0%); }
 
     .creator-label {
       font-family: 'Courier New', monospace;
       font-size: 12px;
-      color: #555;
+      color: #888;
       letter-spacing: 2px;
     }
 
@@ -268,19 +373,20 @@
       border: 2px solid #fff;
       letter-spacing: 1px;
       line-height: 1.8;
+      transition: background 0.15s, color 0.15s;
     }
 
     .contact-btn:hover { background: #000; color: #fff; }
-    .contact-btn .btn-sub { font-size: 8px; color: #888; display: block; }
+    .contact-btn .btn-sub { font-size: 8px; color: #666; display: block; }
     .contact-btn:hover .btn-sub { color: #888; }
 
     .guestbook-bar {
       text-align: center;
       padding: 8px;
-      border: 1px solid #1a1a1a;
+      border: 1px solid #333;
       font-family: 'Courier New', monospace;
-      font-size: 11px;
-      color: #333;
+      font-size: 12px;
+      color: #777;
       margin-top: 15px;
       letter-spacing: 2px;
     }
@@ -304,14 +410,15 @@
       padding: 14px;
       font-family: 'Courier New', monospace;
       font-size: 11px;
-      color: #222;
+      color: #666;
       letter-spacing: 2px;
     }
 
     @media (max-width: 600px) {
-      .site-title { font-size: 16px; }
+      header img.logo { width: 160px; }
       .news-card  { width: 100%; }
       nav a       { font-size: 8px; margin: 3px 4px; }
+      .retro-player { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -320,18 +427,14 @@
   <!-- ШАПКА -->
   <header>
     <img class="logo" src="logo.svg" alt="BEGEBЕН">
-    <div class="site-title">БЭГЭБЭН</div>
-    <div class="subtitle">STUDIO // OFFICIAL SITE // EST. 2024</div>
-    <br>
-    <div style="font-family:'Courier New',monospace;font-size:11px;color:#2a2a2a;letter-spacing:2px;">
-      -= СТУДИЯ РАЗРАБОТКИ =-
-    </div>
+    <div class="subtitle">STUDIO — ОФИЦИАЛЬНЫЙ САЙТ — С 2024</div>
+    <div class="header-label">СТУДИЯ РАЗРАБОТКИ</div>
   </header>
 
   <!-- БЕГУЩАЯ СТРОКА -->
   <div class="marquee-bar">
     <span>
-      *** БЭГЭБЭН СТУДИЯ *** РАЗРАБОТКА *** МЫ ЕЩЁ ЖИВЫ *** ПИШИТЕ В ТЕЛЕГРАМ *** БЭГЭБЭН СТУДИЯ *** РАЗРАБОТКА *** МЫ ЕЩЁ ЖИВЫ *** ПИШИТЕ В ТЕЛЕГРАМ *** БЭГЭБЭН СТУДИЯ *** РАЗРАБОТКА ***
+      БЭГЭБЭН СТУДИЯ &nbsp;·&nbsp; РАЗРАБОТКА &nbsp;·&nbsp; МЫ ЕЩЁ ЖИВЫ &nbsp;·&nbsp; ПИШИТЕ В ТЕЛЕГРАМ &nbsp;·&nbsp; БЭГЭБЭН СТУДИЯ &nbsp;·&nbsp; РАЗРАБОТКА &nbsp;·&nbsp; МЫ ЕЩЁ ЖИВЫ &nbsp;·&nbsp; ПИШИТЕ В ТЕЛЕГРАМ &nbsp;·&nbsp;
     </span>
   </div>
 
@@ -346,35 +449,50 @@
   <div class="container">
 
     <!-- НОВОСТИ -->
-    <section id="news">
+    <section id="news" class="reveal">
       <h2 class="section-title">НОВОСТИ</h2>
       <div class="news-grid">
 
-        <div class="news-card">
+        <div class="news-card reveal-left reveal-delay-1">
           <img src="news1.png" alt="NEWS1"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="img-placeholder">[ NO IMAGE ]</div>
           <div class="news-card-body">
-            <div class="news-card-title">!! СТУДИЯ ОБАНКРОТИЛАСЬ! !!</div>
+            <div class="news-card-title">СТУДИЯ ОБАНКРОТИЛАСЬ</div>
             <div class="news-card-text">
-              Студия бэгэбэн обанкротилась. Глава заявил:<br><br>
-              <em style="color:#777;">"С С Сссссссссссс"</em><br><br>
+              Студия Бэгэбэн обанкротилась. Глава заявил:
+            </div>
+
+            <!-- АУДИО ПЛЕЕР -->
+            <audio id="sssAudio" src="sss.mp3" preload="metadata"></audio>
+            <div class="retro-player">
+              <button class="play-btn" id="playBtn" onclick="togglePlay()">► PLAY</button>
+              <div class="player-info">
+                <span class="player-title">sss.mp3</span>
+                <div class="player-progress-wrap" id="progressWrap" onclick="seekAudio(event)">
+                  <div class="player-progress-bar" id="progressBar"></div>
+                </div>
+                <span class="player-time" id="playerTime">0:00 / 0:00</span>
+              </div>
+            </div>
+
+            <div class="news-card-text" style="margin-top:10px;">
               Ему аплодировали стоя.
             </div>
-            <div class="news-date">// СРОЧНО //</div>
+            <div class="news-date">СРОЧНО</div>
           </div>
         </div>
 
-        <div class="news-card">
+        <div class="news-card reveal-right reveal-delay-2">
           <img src="news2.png" alt="NEWS2"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="img-placeholder">[ NO IMAGE ]</div>
           <div class="news-card-body">
-            <div class="news-card-title">МЫ РАБОТАЕМ НАД ПРОЕКТОМ..</div>
+            <div class="news-card-title">МЫ РАБОТАЕМ НАД ПРОЕКТОМ</div>
             <div class="news-card-text">
-              Мы работаем над крутым проектом что бы заработать и купить поесть.
+              Мы работаем над крутым проектом, чтобы заработать и купить поесть.
             </div>
-            <div class="news-date"> В РАБОТЕ </div>
+            <div class="news-date">В РАБОТЕ</div>
           </div>
         </div>
 
@@ -384,10 +502,10 @@
     <div class="retro-hr"></div>
 
     <!-- ПРОЕКТЫ -->
-    <section id="projects">
+    <section id="projects" class="reveal">
       <h2 class="section-title">ПРОЕКТЫ</h2>
       <div class="under-construction">
-        <span class="uc-text">!!! РАЗДЕЛ В РАЗРАБОТКЕ !!!</span>
+        <span class="uc-text">РАЗДЕЛ В РАЗРАБОТКЕ</span>
       </div>
       <div class="no-projects">ПОКА НИ ОДНОГО ПРОЕКТА</div>
     </section>
@@ -395,17 +513,17 @@
     <div class="retro-hr"></div>
 
     <!-- СВЯЗЬ -->
-    <section id="contact">
+    <section id="contact" class="reveal">
       <h2 class="section-title">СВЯЗЬ</h2>
       <div class="contact-wrapper">
 
-        <div class="creator-block">
+        <div class="creator-block reveal-left">
           <img src="sss.png" alt="CREATOR"
             onerror="this.style.background='#111';">
-          <div class="creator-label">// СОЗДАТЕЛЬ //</div>
+          <div class="creator-label">СОЗДАТЕЛЬ</div>
         </div>
 
-        <div class="contact-links">
+        <div class="contact-links reveal-right">
           <a class="contact-btn" href="https://t.me/thebogdand" target="_blank" rel="noopener">
             ТЕЛЕГРАМ
             <span class="btn-sub">@thebogdand</span>
@@ -426,8 +544,64 @@
 
   <!-- ФУТЕР -->
   <footer>
-    &lt;!-- (C) БЭГЭБЭН СТУДИЯ 2026 --&gt;
+    &copy; БЭГЭБЭН СТУДИЯ 2026
   </footer>
+
+  <script>
+    /* ===== SCROLL АНИМАЦИИ ===== */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
+      .forEach(el => observer.observe(el));
+
+    /* ===== АУДИО ПЛЕЕР ===== */
+    const audio    = document.getElementById('sssAudio');
+    const playBtn  = document.getElementById('playBtn');
+    const progress = document.getElementById('progressBar');
+    const timeEl   = document.getElementById('playerTime');
+    const wrap     = document.getElementById('progressWrap');
+
+    function formatTime(s) {
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = '■ STOP';
+      } else {
+        audio.pause();
+        playBtn.textContent = '► PLAY';
+      }
+    }
+
+    audio.addEventListener('timeupdate', () => {
+      if (!audio.duration) return;
+      const pct = (audio.currentTime / audio.duration) * 100;
+      progress.style.width = pct + '%';
+      timeEl.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+    });
+
+    audio.addEventListener('ended', () => {
+      playBtn.textContent = '► PLAY';
+      progress.style.width = '0%';
+    });
+
+    function seekAudio(e) {
+      if (!audio.duration) return;
+      const rect = wrap.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      audio.currentTime = (x / rect.width) * audio.duration;
+    }
+  </script>
 
 </body>
 </html>
